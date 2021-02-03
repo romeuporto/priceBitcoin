@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'dart:async';
+import 'dart:convert';
 
 class Bitcoin extends StatefulWidget {
   @override
@@ -8,9 +10,15 @@ class Bitcoin extends StatefulWidget {
 
 class _BitcoinState extends State<Bitcoin> {
   String _preco = "0";
-  void _recuperarPreco(){{
-  }
-  }
+
+  void _recuperarPreco() async {
+    String url = "https://blockchain.info/ticker";
+    http.Response response = await http.get(url);
+
+    Map<String, dynamic> retorno = json.decode(response.body);
+    print("Resultado: " + retorno.toString());
+}
+
 
   @override
   Widget build(BuildContext context) {
