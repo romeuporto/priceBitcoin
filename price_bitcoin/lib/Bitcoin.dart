@@ -16,7 +16,10 @@ class _BitcoinState extends State<Bitcoin> {
     http.Response response = await http.get(url);
 
     Map<String, dynamic> retorno = json.decode(response.body);
-    print("Resultado: " + retorno.toString());
+    setState(() {
+      _preco = retorno["BRL"]["buy"].toString();
+    });
+    print("Resultado: " + retorno["BRL"]["buy"].toString() );
 }
 
 
@@ -48,10 +51,7 @@ class _BitcoinState extends State<Bitcoin> {
                   ),
                   color: Colors.orangeAccent,
                   padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
-                  onPressed: (){
-
-
-                    },
+                  onPressed: _recuperarPreco,
                 )
               ],
             )
