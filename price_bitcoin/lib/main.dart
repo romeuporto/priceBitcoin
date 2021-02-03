@@ -4,5 +4,6 @@ import 'package:pricebitcoin/Bitcoin.dart';
 void main () {
   runApp(MaterialApp(
     home: Bitcoin(),
+    debugShowCheckedModeBanner: false,
   ));
 }
